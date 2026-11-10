@@ -1,0 +1,117 @@
+{
+  "success": true,
+  "errorMessage": "处理成功",
+  "value": {
+    "lastUpdateTime": "2026-10-30 14:29:57",
+    "matchInfoList": [
+      {
+        "businessDate": "2026-10-31",
+        "weekday": "周六",
+        "matchCount": 2,
+        "subMatchList": [
+          {
+            "matchId": 2042401,
+            "matchNumStr": "周六006",
+            "leagueAbbName": "英超",
+            "leagueAllName": "英格兰超级联赛",
+            "leagueId": 25,
+            "homeTeamAbbName": "切尔西",
+            "homeTeamAllName": "切尔西",
+            "awayTeamAbbName": "曼联",
+            "awayTeamAllName": "曼彻斯特联",
+            "homeRank": "[英超4]",
+            "awayRank": "[英超7]",
+            "matchDate": "2026-10-31",
+            "matchTime": "20:30:00",
+            "matchStatus": "Selling",
+            "had": {"h": "1.71", "d": "3.62", "a": "3.60", "goalLine": "", "updateDate": "2026-10-30", "updateTime": "11:00:00"},
+            "hhad": {"h": "3.10", "d": "4.10", "a": "1.75", "goalLine": "-1", "updateDate": "2026-10-30", "updateTime": "11:00:03"},
+            "poolList": [
+              {"poolCode": "HHAD", "single": 1},
+              {"poolCode": "HAD", "single": 1}
+            ]
+          },
+          {
+            "matchId": 2042402,
+            "matchNumStr": "周六015",
+            "leagueAbbName": "荷甲",
+            "leagueAllName": "荷兰甲级联赛",
+            "leagueId": 17,
+            "homeTeamAbbName": "阿贾克斯",
+            "homeTeamAllName": "阿贾克斯",
+            "awayTeamAbbName": "埃因霍温",
+            "awayTeamAllName": "埃因霍温",
+            "homeRank": "[荷甲2]",
+            "awayRank": "[荷甲1]",
+            "matchDate": "2026-10-31",
+            "matchTime": "22:45:00",
+            "matchStatus": "Selling",
+            "had": {"h": "2.20", "d": "3.40", "a": "2.90", "goalLine": "", "updateDate": "2026-10-30", "updateTime": "09:30:00"},
+            "hhad": {"h": "2.45", "d": "3.60", "a": "2.40", "goalLine": "-1", "updateDate": "2026-10-30", "updateTime": "09:30:02"},
+            "poolList": [
+              {"poolCode": "HHAD", "single": 0},
+              {"poolCode": "HAD", "single": 0}
+            ]
+          }
+        ]
+      },
+      {
+        "businessDate": "2026-11-01",
+        "weekday": "周日",
+        "matchCount": 2,
+        "subMatchList": [
+          {
+            "matchId": 2042403,
+            "matchNumStr": "周日002",
+            "leagueAbbName": "法甲",
+            "leagueAllName": "法国甲级联赛",
+            "leagueId": 32,
+            "homeTeamAbbName": "尼斯",
+            "homeTeamAllName": "尼斯",
+            "awayTeamAbbName": "雷恩",
+            "awayTeamAllName": "雷恩",
+            "homeRank": "[法甲5]",
+            "awayRank": "[法甲8]",
+            "matchDate": "2026-11-01",
+            "matchTime": "03:00:00",
+            "matchStatus": "Selling",
+            "had": {"h": "2.65", "d": "3.50", "a": "2.10", "goalLine": "", "updateDate": "2026-10-30", "updateTime": "14:00:42"},
+            "hhad": {"h": "1.55", "d": "3.90", "a": "4.20", "goalLine": "+1", "updateDate": "2026-10-30", "updateTime": "14:00:47"},
+            "poolList": [
+              {"poolCode": "HHAD", "single": 0},
+              {"poolCode": "HAD", "single": 0}
+            ]
+          },
+          {
+            "matchId": 2042404,
+            "matchNumStr": "周日009",
+            "leagueAbbName": "葡超",
+            "leagueAllName": "葡萄牙超级联赛",
+            "leagueId": 55,
+            "homeTeamAbbName": "波尔图",
+            "homeTeamAllName": "波尔图",
+            "awayTeamAbbName": "本菲卡",
+            "awayTeamAllName": "本菲卡",
+            "homeRank": "[葡超3]",
+            "awayRank": "[葡超2]",
+            "matchDate": "2026-11-01",
+            "matchTime": "04:45:00",
+            "matchStatus": "Selling",
+            "had": {"h": "", "d": "", "a": "", "goalLine": "", "updateDate": "", "updateTime": ""},
+            "hhad": {"h": "", "d": "", "a": "", "goalLine": "", "updateDate": "", "updateTime": ""},
+            "poolList": [
+              {"poolCode": "HHAD", "single": 0},
+              {"poolCode": "HAD", "single": 0}
+            ]
+          }
+        ]
+      }
+    ],
+    "leagueList": [
+      {"leagueId": 25, "leagueName": "英格兰超级联赛", "leagueNameAbbr": "英超"},
+      {"leagueId": 62, "leagueName": "西班牙甲级联赛", "leagueNameAbbr": "西甲"},
+      {"leagueId": 17, "leagueName": "荷兰甲级联赛", "leagueNameAbbr": "荷甲"}
+    ],
+    "totalCount": 4
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "spec_version": 1,
+  "name": "sporttery_on_sale",
+  "description": "竞彩官网 在售场次+胜平负/让球赔率",
+  "verified_at": "2026-10-30",
+  "request": {
+    "url": "https://webapi.sporttery.cn/gateway/jc/football/getMatchCalculatorV1.qry",
+    "method": "GET",
+    "params": {"poolCode": "hhad,had", "channel": "c"},
+    "headers": {"Referer": "https://www.sporttery.cn/"}
+  },
+  "success_checks": [
+    {"path": "success", "equals": true}
+  ],
+  "days_path": "value.matchInfoList.*",
+  "matches_path": "subMatchList.*",
+  "field_map": {
+    "match_id": "matchId",
+    "match_num": "matchNumStr",
+    "league": "leagueAbbName",
+    "league_id": "leagueId",
+    "home": "homeTeamAbbName",
+    "away": "awayTeamAbbName",
+    "home_rank": "homeRank",
+    "away_rank": "awayRank",
+    "match_date": "matchDate",
+    "match_clock": "matchTime",
+    "status": "matchStatus"
+  },
+  "had": {
+    "win": "had.h", "draw": "had.d", "lose": "had.a",
+    "update_date": "had.updateDate", "update_time": "had.updateTime"
+  },
+  "hhad": {
+    "win": "hhad.h", "draw": "hhad.d", "lose": "hhad.a",
+    "goal_line": "hhad.goalLine",
+    "update_date": "hhad.updateDate", "update_time": "hhad.updateTime"
+  },
+  "single": {"list_path": "poolList.*", "where": {"poolCode": "HAD"}, "field": "single"},
+  "required_fields": ["match_id", "league", "home", "away", "match_date", "match_clock"]
+}
