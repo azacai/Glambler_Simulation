@@ -16,8 +16,17 @@ cd 竞彩足球策略工具
 python -m jc autopoll        # 一键智能采集（推荐日常入口）
 python -m jc list            # 今日起3天五大联赛场次一览
 python -m jc analyze         # 隐含概率 + 赔率轨迹信号
-python -m jc selftest        # 全量测试（53项）
+python -m jc selftest        # 全量测试（68项）
 ```
+
+## 数据说明（克隆后首次使用）
+
+`data/` 目录（SQLite 数据库、采集日志、原始报文留档）**不入 Git**——克隆后没有任何历史数据：
+
+- `python -m jc selftest`：离线可跑，验证环境（测试 fixture 自带真实报文裁剪样本）；
+- `python -m jc autopoll`：联网采集一次官方在售场次+赔率，之后 `list` / `analyze` / `export` 即可出数；
+- 赔率轨迹靠自建快照积累（官方无历史赔率接口），轨迹信号（open_move 等）需要至少 2 条快照才会出现，建议注册定时采集持续积累；
+- 多机使用与数据同步原则见 [HANDOVER.md](HANDOVER.md) §2。
 
 ## 采集调度（v0.2）
 
@@ -52,23 +61,21 @@ python -m jc selftest        # 全量测试（53项）
 
 ## 定时采集（Windows 计划任务，每 30 分钟）
 
-先建 `run_autopoll.bat`（按实际路径调整）：
+先建 `run_autopoll.bat`（仓库已附带，`cd /d` 后的路径按实际部署位置调整）：
 
 ```bat
 @echo off
-cd /d "D:\系统部工作\竞彩足球策略工具"
+cd /d "C:\your\path\竞彩足球策略工具"
 python -m jc autopoll >> data\autopoll.log 2>&1
 ```
 
 管理员 CMD 注册任务（09:00 起每 30 分钟，全天 48 次）：
 
 ```bat
-schtasks /Create /TN "JC-Autopoll" /TR "\"D:\系统部工作\竞彩足球策略工具\run_autopoll.bat\"" /SC MINUTE /MO 30 /ST 09:00 /F
+schtasks /Create /TN "JC-Autopoll" /TR "\"C:\your\path\竞彩足球策略工具\run_autopoll.bat\"" /SC MINUTE /MO 30 /ST 09:00 /F
 ```
 
 删除任务：`schtasks /Delete /TN "JC-Autopoll" /F`
-
-（本机已于 2026-11-02 注册 `JC-Autopoll`：每 30 分钟执行 `run_autopoll.bat`，日志在 `data\autopoll.log`）
 
 ## 数据导出 CSV
 
@@ -80,13 +87,13 @@ python -m jc export --out D:\某目录        # 指定输出目录
 
 编码 utf-8-sig，Excel 双击打开中文不乱码。`odds_full` 是人工分析最常用的宽表：场次编号/联赛/主客队/开赛时间 JOIN 全部赔率快照，按开赛时间和快照时间排序。
 
-## 备份与双机同步
+## 备份与迁移
 
 ```bash
 python -m jc backup                 # 在线安全备份 → data/backups/jingcai_时间戳.db
 ```
 
-双击 `run_backup.bat` 效果相同并自动打开备份目录。SQLite backup API 保证任意时刻执行都得到一致性副本，不锁库、不停采集。跨机器同步/迁移的完整操作说明见 [HANDOVER.md](HANDOVER.md) §2（原则：采集机唯一，备份文件单向覆盖）。
+双击 `run_backup.bat` 效果相同并自动打开备份目录。SQLite backup API 保证任意时刻执行都得到一致性副本，不锁库、不停采集。跨机器同步/迁移的操作说明见 [HANDOVER.md](HANDOVER.md) §2（原则：同一时间只在一台机器采集，备份文件覆盖目标机 `data/jingcai.db`）。
 
 ## 目录结构
 
@@ -104,3 +111,7 @@ tests/         unittest 套件（fixtures 为真实报文裁剪，不打网络�
 2. **测试随版本刷新**：每个版本交付时测试套件必须全绿，`python -m jc selftest` 一键回归。
 3. 快照时间戳优先用官方"赔率最后调整时间"，赔率轨迹精度不受轮询间隔限制。
 4. 采集节奏参数集中在 `jc/config.py`（BASE/ACCEL/DISCOVERY），改配置不改代码。
+
+## 许可证
+
+MIT License，见 [LICENSE](LICENSE)。
